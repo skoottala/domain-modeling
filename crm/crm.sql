@@ -3,7 +3,7 @@
 -- e.g. DROP TABLE IF EXISTS ______;
 
 -- CREATE TABLES
-DROP TABLE IF EXISTS contacts;
+DROP TABLE IF EXISTS salespeople;
 DROP TABLE IF EXISTS activities;
 DROP TABLE IF EXISTS companies;
 DROP TABLE IF EXISTS contacts_company;
@@ -11,45 +11,42 @@ DROP TABLE IF EXISTS industries;
 DROP TABLE IF EXISTS internal_contact;
 DROP TABLE IF EXISTS join_industries_companies;
 
-CREATE TABLE contacts (
+CREATE TABLE salespeople (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   first_name TEXT,
   last_name TEXT,
   email TEXT,
   phone_number TEXT
 );
+CREATE TABLE contacts (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  first_name TEXT,
+  last_name TEXT,
+  email TEXT,
+  phone_number TEXT,
+  company_id INTEGER);
+
 CREATE TABLE activities (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  email_id TEXT,
-  call_id TEXT,
-  date TEXT,
-  time TEXT
+  created_at TEXT,
+  notes TEXT,
+  salesperson_id INTEGER,
+  contact_id INTEGER
+);
 );
 
 
   CREATE TABLE companies(
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  company_name TEXT,
-  industry TEXT);
+  company_name TEXT);
 
-  CREATE TABLE contacts_company(
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  companies_id INTEGER,
-  contacts_id INTEGER);
 
 CREATE TABLE industries (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   industry TEXT);
 
 
-CREATE TABLE internal_contact (
-id INTEGER PRIMARY KEY AUTOINCREMENT,
-first_name TEXT,
-last_name TEXT
-email TEXT,
-phone_number TEXT);
-
-CREATE TABLE join_industries_companies (
+CREATE TABLE industry_memberships(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     industries_id INTEGER,
     companies_id INTEGER);
